@@ -5,11 +5,11 @@ class StreamSelection(Frame):
 		Frame.__init__(self)
 		self.canvas = canvas
 		self.s = Scrollbar(self)
-		self.L = Listbox(self,selectmode=EXTENDED)
+		self.L = Listbox(self,height=40,selectmode=EXTENDED)
 		self.L.bind('<<ListboxSelect>>',self.poll)
 
-		self.s.pack(side=RIGHT, fill=BOTH)
-		self.L.pack(side=LEFT, fill=BOTH)
+		self.s.pack(side=RIGHT, fill=Y)
+		self.L.pack(side=LEFT, fill=Y)
 
 		self.s['command'] = self.L.yview
 		self.L['yscrollcommand'] = self.s.set
