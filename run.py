@@ -9,6 +9,9 @@ for line in streamfile:
 	if tokens[0] == '0':
 		if tokens[1] != 'STREND' and tokens[1] != 'HOVER' and tokens[1] != 'STARTHOVER' and tokens[1] != 'ENDHOVER' and tokens[1] != 'VIDEOOPEN':
 			stream.append(line)
+	else:
+		if tokens[1] == 'CLEAR':
+			stream.append(line)
 
 streamfile.close()
 mainpanel = MainPanel(stream)

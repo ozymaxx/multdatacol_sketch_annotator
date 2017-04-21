@@ -70,17 +70,17 @@ class StreamSelection(Frame):
 	def respondToKey(self,event):
 		curStream = self.currentStream()
 		
-		if len(curStream) > 0:
-			for item in curStream:
-				tokens = item.split(',')
-				
-				if tokens[1] == 'CLEAR':
-					showerror('Clearing','Canvas clearing is not a sketch point!')
-					return
-			
-			charPressed = str(event.char)
-			
-			if charPressed == 'a':
+		charPressed = str(event.char)
+		
+		if charPressed == 'a':
+			if len(curStream) > 0:
+				for item in curStream:
+					tokens = item.split(',')
+					
+					if tokens[1] == 'CLEAR':
+						showerror('Clearing','Canvas clearing is not a sketch point!')
+						return
+						
 				annotation = askstring('Label','Enter the name of the symbol:')
 				annotation = annotation.strip()
 				
@@ -91,8 +91,8 @@ class StreamSelection(Frame):
 						self.save_path = askdirectory()
 						
 					self.saveStreamAsSketch(curStream,annotation)
-		else:
-			showerror('No selection','You must choose a part of the sketch stream!')
+			else:
+				showerror('No selection','You must choose a part of the sketch stream!')
 		
 	def poll(self,*args):
 		self.canvas.drawStream(self.currentStream())
