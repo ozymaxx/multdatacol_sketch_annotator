@@ -1,5 +1,4 @@
 from MainPanel import *
-from tkFileDialog import *
 
 streamfile = askopenfile(mode='r')
 
